@@ -75,6 +75,13 @@ public class HomeController {
 	public String usertolog(@PathVariable("id") Long id,Model mymodel, HttpSession session,@ModelAttribute("transaction") Transaction transaction) {
 		mymodel.addAttribute("user", this.uService.findUserById((Long)session.getAttribute("user__id")));
 		mymodel.addAttribute("currency", this.cService.getCurrency(id));
+		Unirest.config().verifySsl(false);
+		HttpResponse<JsonNode> response = Unirest.get("https://api.polygon.io/v1/open-close/AAPL/2020-10-14?adjusted=true&apiKey=Il4TXhi_rLZBjI3VC0zSFRmrBhhx3wsD").asJson();
+		JSONObject resultFromApi = response.getBody().getObject();
+		double openPrice =Double.parseDouble(resultFromApi.getString("open"));
+		
+		mymodel.addAttribute("price", openPrice);
+		
 		//get real time price here//call api
 		return "new.jsp";
 	}

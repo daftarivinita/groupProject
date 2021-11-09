@@ -14,6 +14,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+${price}
 ${currency.name}
 <form:form method="POST" action="/${currency.id}/new" modelAttribute="transaction">
 <div class="form-group row">
