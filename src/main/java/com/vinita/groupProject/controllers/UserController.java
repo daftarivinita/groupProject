@@ -53,6 +53,7 @@ public class UserController {
 		}
 		User userToLog = this.uService.getUserByEmail(email);
 		session.setAttribute("user__id", userToLog.getId());
+		
 		return "redirect:/dashboard";
 	}
 
@@ -65,10 +66,6 @@ public class UserController {
 	}
 	
 	
-	@GetMapping("/dashboard")
-	public String usertolog(Model mymodel, HttpSession session) {
-		mymodel.addAttribute("user", this.uService.findUserById((Long)session.getAttribute("user__id")));
-		return "dashboard.jsp";
-	}
+	
 	
 }
