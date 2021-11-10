@@ -1,9 +1,11 @@
 package com.vinita.groupProject.services;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.vinita.groupProject.models.Currency;
 import com.vinita.groupProject.models.Portfolio;
 import com.vinita.groupProject.repositories.PortfolioRepository;
 
@@ -13,6 +15,9 @@ import com.vinita.groupProject.repositories.PortfolioRepository;
 public class PortfolioService {
 	@Autowired
 	private PortfolioRepository pRepo;
+	@Autowired
+	public CurrencyService cService;
+	
 
 	
 	
@@ -20,6 +25,16 @@ public class PortfolioService {
 	
 	//create a portfolio
 	public Portfolio createPortfolio(Portfolio portfolio) {
+		//make currency
+        Currency currency = cService.getCurrencyByName("USD");
+        //this.cService.createCurrency(currency);
+      
+        Currency currency1 = cService.getCurrencyByName("Bitcoin");
+        //this.cService.createCurrency(currency1);
+	  
+
+        portfolio.getHoldings().put(currency, 11000);
+        portfolio.getHoldings().put(currency1, 0);
 		return this.pRepo.save(portfolio);
 	}
 	

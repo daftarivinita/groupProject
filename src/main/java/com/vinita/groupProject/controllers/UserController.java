@@ -1,11 +1,12 @@
 package com.vinita.groupProject.controllers;
 
+
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,7 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import com.vinita.groupProject.models.User;
+import com.vinita.groupProject.services.CurrencyService;
+import com.vinita.groupProject.services.PortfolioService;
+import com.vinita.groupProject.services.TransactionService;
 import com.vinita.groupProject.services.UserService;
 import com.vinita.groupProject.validators.UserValidator;
 
@@ -25,6 +30,12 @@ public class UserController {
 	private UserService uService;
 	@Autowired
 	private UserValidator validator;
+	@Autowired
+	public CurrencyService cService;
+	@Autowired
+	public TransactionService tService;
+	@Autowired
+	public PortfolioService pService;
 	
 	@GetMapping("/")
 	public String landing(@ModelAttribute("user") User user) {
@@ -38,12 +49,19 @@ public class UserController {
 		if (result.hasErrors()) {
 			return "user.jsp";
 		} else {
+//			 Portfolio portfolio = new Portfolio();
+//	         this.pService.createPortfolio(portfolio);
+//	         user.setPortfolio(portfolio);
 			User newUser = this.uService.registerUser(user);
+			
 			session.setAttribute("user__id",newUser.getId());
 			return "redirect:/dashboard";
 		}
 		
 	}
+			
+			
+			
 	
 	@PostMapping("/login")
 	public String login(HttpSession session, @RequestParam("lemail") String email, @RequestParam("lpassword") String password, RedirectAttributes redirectAttribute) {

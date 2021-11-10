@@ -18,9 +18,10 @@ ${price}
 ${currency.name}
 <form:form method="POST" action="/${currency.id}/new" modelAttribute="transaction">
 <div class="form-group row">
-	<form:label path="currency.count">Number Of Coin ${currency.name}</form:label>
-	<form:errors path="currency.count"/>
-	<form:select type="text" class="form-control" path="currency.count">
+<p>${currency.name}</p>
+	<form:label path="count">Number Of Coins</form:label>
+	<form:errors path="count"/>
+	<form:select type="text" class="form-control" path="count">
 		<c:forEach var = "i" begin = "1" end = "5">
     		<form:option value = "${currency.id}">${i} </form:option>
     	</c:forEach>
@@ -29,7 +30,7 @@ ${currency.name}
 <div class="form-group row">
 	<form:label path="price">Current Price</form:label>
 	<form:errors path="price"/>
-	<form:input type="number" class="form-control" path="price"/>
+	<form:input  class="form-control" path="price"/>
 </div>
 
 <div class = "form-group row">

@@ -10,6 +10,7 @@ import com.vinita.groupProject.repositories.CurrencyRepository;
 
 
 
+
 @Service
 public class CurrencyService {
 	@Autowired
@@ -24,7 +25,12 @@ public class CurrencyService {
 	
 	//create a currency
 	public Currency createCurrency(Currency currency) {
-		return this.cRepo.save(currency);
+		Currency existing = this.cRepo.findByName(currency.getName());
+		if (existing == null) {
+			return this.cRepo.save(currency);
+		} else {
+			return existing;
+		}
 	}
 	
 	//retrieve a currency
@@ -39,6 +45,12 @@ public class CurrencyService {
 	//delete a currency
 	public void destroy(Long id) {
 		this.cRepo.deleteById(id);
+	}
+	
+	//get Currency by name
+	public Currency getCurrencyByName(String name) {
+		Currency target = this.cRepo.findByName(name);
+		return target;
 	}
 }
 		

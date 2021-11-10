@@ -13,4 +13,5 @@ import com.vinita.groupProject.models.Currency;
 @Repository
 public interface CurrencyRepository  extends CrudRepository<Currency, Long> {
 	List<Currency> findAll();
+	Currency findByName(String name);
 }

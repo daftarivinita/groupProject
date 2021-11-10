@@ -6,6 +6,8 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
 import com.vinita.groupProject.models.User;
 import com.vinita.groupProject.repositories.UserRepository;
 
@@ -15,6 +17,10 @@ import com.vinita.groupProject.repositories.UserRepository;
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	public CurrencyService cService;
+	@Autowired
+	public PortfolioService pService;
     
     //get all user
 	public List<User> getAllUser(){
@@ -27,6 +33,8 @@ public class UserService {
         String hash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
         //set the user password
         user.setPassword(hash);
+        
+       
         return userRepository.save(user);
     }
     

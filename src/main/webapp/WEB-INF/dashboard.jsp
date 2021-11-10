@@ -14,8 +14,36 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach items="${currency}" var="c">
-		<a href= "/${c.id}/new">${c.name}</a>
-    </c:forEach>
+
+<h1>Welcome User, ${user.firstName}</h1>
+
+<%-- <c:choose>
+         
+         <c:when test = "${user.porfolio}">
+           
+		<c:forEach items="${currency}" var="c">
+				<a href= "/${c.id}/new">${c.name}</a>
+    	</c:forEach>
+         </c:when>
+         
+        
+         
+         <c:otherwise>
+          <form:form method="POST" action="/createPortfolio" modelAttribute="portfolio">
+
+	<p><button class="btn btn-success">Submit</button></p>
+</form:form>
+         </c:otherwise>
+      </c:choose> --%>
+
+
+<p>if user donot have portfolio give them a form to add portfolio to thier profile else show what they have in thier portfolio Table. since this is one to one relationship one user should not create more then one portfolio</p>
+<form:form method="POST" action="/dashboard" modelAttribute="portfolio">
+
+	<p><button class="btn btn-success">Invest With Us!</button></p>
+</form:form>
+<%-- <c:forEach items="${currency}" var="c">
+				<p><a href= "/${c.id}/new">${c.name}</a> ${c.count }</p>
+    	</c:forEach> --%>
 </body>
 </html>

@@ -2,15 +2,21 @@ package com.vinita.groupProject.models;
 
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
@@ -24,26 +30,32 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name="users")
 public class User {
+	
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+    
     @NotBlank
     @Size(max= 15)
     private String firstName;
+    
     @NotBlank
     @Size(max= 15)
     private String lastName;
+    
     @Email
     @NotBlank
     private String email;
+    
     private String password;
+    
     @Transient
     private String confirmPassword;
+    
     @Column(updatable=false)
     private Date createdAt;
-    private Date updatedAt;
     
-   
+    private Date updatedAt;
     
     
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
@@ -51,22 +63,36 @@ public class User {
     
     @OneToOne(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private Portfolio portfolio;
-    
-   
-    
-   
 
-
+//    @ElementCollection
+//    @CollectionTable(name = "user_portfolio_count", 
+//      joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")})
+//    @MapKeyColumn(name = "currency_id")
+//    @Column(name = "count")
+//	Map<Currency, Integer> holdings = new HashMap<>();
 
 	public User() {
+		
     }
     
+
     
-    
-    @PrePersist
+    public User(@NotBlank @Size(max = 15) String firstName, @NotBlank @Size(max = 15) String lastName,
+			@Email @NotBlank String email, String password, String confirmPassword) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.confirmPassword = confirmPassword;
+	}
+
+
+
+	@PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
     }
+    
     @PreUpdate
     protected void onUpdate(){
         this.updatedAt = new Date();
