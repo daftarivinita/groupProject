@@ -15,10 +15,5 @@
 </head>
 <body>
 
-<h1>Welcome User, ${user.firstName}</h1>
-
-
-
-
 </body>
 </html>

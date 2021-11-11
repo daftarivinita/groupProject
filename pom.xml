@@ -66,6 +66,14 @@
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
         </dependency>
+        <!-- DEPENDENCY FOR USING unirest  -->
+        <!-- https://mvnrepository.com/artifact/com.konghq/unirest-java -->
+		<dependency>
+		    <groupId>com.konghq</groupId>
+		    <artifactId>unirest-java</artifactId>
+		    <version>3.13.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

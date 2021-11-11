@@ -1,21 +1,26 @@
 package com.vinita.groupProject.controllers;
 
+
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.vinita.groupProject.models.User;
+import com.vinita.groupProject.services.CurrencyService;
+import com.vinita.groupProject.services.TransactionService;
 import com.vinita.groupProject.services.UserService;
 import com.vinita.groupProject.validators.UserValidator;
+
+
+
 
 
 
@@ -25,6 +30,11 @@ public class UserController {
 	private UserService uService;
 	@Autowired
 	private UserValidator validator;
+	@Autowired
+	public CurrencyService cService;
+	@Autowired
+	public TransactionService tService;
+	
 	
 	@GetMapping("/")
 	public String landing(@ModelAttribute("user") User user) {
@@ -45,6 +55,11 @@ public class UserController {
 		
 	}
 	
+			
+			
+			
+			
+	
 	@PostMapping("/login")
 	public String login(HttpSession session, @RequestParam("lemail") String email, @RequestParam("lpassword") String password, RedirectAttributes redirectAttribute) {
 		if(!this.uService.authenticateUser(email, password)) {
@@ -53,6 +68,7 @@ public class UserController {
 		}
 		User userToLog = this.uService.getUserByEmail(email);
 		session.setAttribute("user__id", userToLog.getId());
+		
 		return "redirect:/dashboard";
 	}
 
@@ -65,10 +81,6 @@ public class UserController {
 	}
 	
 	
-	@GetMapping("/dashboard")
-	public String usertolog(Model mymodel, HttpSession session) {
-		mymodel.addAttribute("user", this.uService.findUserById((Long)session.getAttribute("user__id")));
-		return "dashboard.jsp";
-	}
+	
 	
 }
