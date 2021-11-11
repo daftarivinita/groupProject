@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -18,7 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -61,15 +61,14 @@ public class User {
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
     private List<Transaction> allTransactions;
     
-    @OneToOne(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-    private Portfolio portfolio;
+    
 
-//    @ElementCollection
-//    @CollectionTable(name = "user_portfolio_count", 
-//      joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")})
-//    @MapKeyColumn(name = "currency_id")
-//    @Column(name = "count")
-//	Map<Currency, Integer> holdings = new HashMap<>();
+    @ElementCollection
+    @CollectionTable(name = "user_portfolio_count", 
+      joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")})
+    @MapKeyColumn(name = "currency_id")
+    @Column(name = "count")
+	Map<Currency, Double> currencies = new HashMap<>();
 
 	public User() {
 		
@@ -194,19 +193,6 @@ public class User {
 		this.updatedAt = updatedAt;
 	}
 	
-	
-	
-	
-	public Portfolio getPortfolio() {
-		return portfolio;
-	}
-
-
-
-	public void setPortfolio(Portfolio portfolio) {
-		this.portfolio = portfolio;
-	}
-
 
 
 	public List<Transaction> getAllTransactions() {
@@ -218,6 +204,22 @@ public class User {
 	public void setAllTransactions(List<Transaction> allTransactions) {
 		this.allTransactions = allTransactions;
 	}
+
+
+
+	public Map<Currency, Double> getCurrencies() {
+		return currencies;
+	}
+
+
+
+	public void setCurrencies(Map<Currency, Double> currencies) {
+		this.currencies = currencies;
+	}
+
+
+
+	
 
 
 

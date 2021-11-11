@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-
 import com.vinita.groupProject.models.User;
 import com.vinita.groupProject.services.CurrencyService;
-import com.vinita.groupProject.services.PortfolioService;
 import com.vinita.groupProject.services.TransactionService;
 import com.vinita.groupProject.services.UserService;
 import com.vinita.groupProject.validators.UserValidator;
+
+
+
 
 
 
@@ -34,8 +34,7 @@ public class UserController {
 	public CurrencyService cService;
 	@Autowired
 	public TransactionService tService;
-	@Autowired
-	public PortfolioService pService;
+	
 	
 	@GetMapping("/")
 	public String landing(@ModelAttribute("user") User user) {
@@ -49,16 +48,14 @@ public class UserController {
 		if (result.hasErrors()) {
 			return "user.jsp";
 		} else {
-//			 Portfolio portfolio = new Portfolio();
-//	         this.pService.createPortfolio(portfolio);
-//	         user.setPortfolio(portfolio);
 			User newUser = this.uService.registerUser(user);
-			
 			session.setAttribute("user__id",newUser.getId());
 			return "redirect:/dashboard";
 		}
 		
 	}
+	
+			
 			
 			
 			

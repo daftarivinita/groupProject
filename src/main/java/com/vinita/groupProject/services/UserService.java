@@ -19,8 +19,7 @@ public class UserService {
 	private UserRepository userRepository;
 	@Autowired
 	public CurrencyService cService;
-	@Autowired
-	public PortfolioService pService;
+	
     
     //get all user
 	public List<User> getAllUser(){
