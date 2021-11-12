@@ -13,10 +13,6 @@ public class TransactionService {
 	@Autowired
 	private TransactionRepository tRepo;
 
-	
-	
-	
-	
 	//create a Transaction
 	public Transaction createTransaction(Transaction transaction) {
 		return this.tRepo.save(transaction);
@@ -36,4 +32,8 @@ public class TransactionService {
 		this.tRepo.deleteById(id);
 	}
 }
+	
+	
+	
+	
 		

@@ -43,22 +43,10 @@ public class HomeController {
 		mymodel.addAttribute("user", user);
 		mymodel.addAttribute("balance", this.uService.getPortfolioBalance(user));
 		mymodel.addAttribute("currency", user.getCurrencies());
-		this.uService.tslaPrice();
-		this.uService.currencyPrice("FB");
+		//this.uService.tslaPrice();
+		//this.uService.currencyPrice("FB");
 		return "dashboard.jsp";
 	}
 
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
