@@ -55,11 +55,6 @@ public class UserController {
 		
 	}
 	
-			
-			
-			
-			
-	
 	@PostMapping("/login")
 	public String login(HttpSession session, @RequestParam("lemail") String email, @RequestParam("lpassword") String password, RedirectAttributes redirectAttribute) {
 		if(!this.uService.authenticateUser(email, password)) {
@@ -71,7 +66,7 @@ public class UserController {
 		
 		return "redirect:/dashboard";
 	}
-
+	
 	
 	//tologout
 	@GetMapping("/logout")
@@ -79,8 +74,5 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
-	
-	
-	
+
 }

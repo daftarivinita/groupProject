@@ -217,26 +217,4 @@ public class User {
 		this.currencies = currencies;
 	}
 
-
-
-	
-
-
-
-	
-
-
-
-	
-	
-
-
-
-	
-
-
-
-    
-	
-    
 }
