@@ -16,8 +16,47 @@
 <body>
 
 <h1>Welcome User, ${user.firstName}</h1>
-<p>${balance}</p>
 
+<table class = "table table-striped table-dark table-bordered">
+   <thead>
+        <tr>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Price</th>
+            <th>Shares</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach items="${currency}" var="entry"> 
+        <tr>
+            <td><c:out value="${entry.key.name}"/></td>
+            
+            <c:choose>
+            <c:when test = "${entry.key.name == 'USD'}">
+            <td><c:out value="${entry.value}"/></td>
+           <td></td>
+            <td></td>
+            <td></td>
+         </c:when>
+         <c:when test = "${entry.key.name == 'Amazon'}">
+         <td><c:out value="${entry.value}"/> * ${amazon}</td>
+           <td>${amazon}</td>
+            <td><c:out value="${entry.value}"/></td>
+            <td><a href="/<c:out value="${entry.key.id}"/>/new">Trade</a></td>
+         </c:when>
+          
+          <c:otherwise>
+          <td><c:out value="${entry.value}"/></td>
+          <td>${tesla }</td>
+            <td><c:out value="${entry.value}"/></td>
+            <td><a href="/<c:out value="${entry.key.id}"/>/new">Trade</a></td>
+          </c:otherwise>
+       </c:choose>
+        </tr>
+        </c:forEach>
+    </tbody>
+</table>
 
 
 </body>
