@@ -59,7 +59,10 @@ public class User {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
     
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY )
+    private List<PortfolioBalance> allBalance;
     
+      
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
     private List<Transaction> allTransactions;
     
@@ -218,5 +221,18 @@ public class User {
 	public void setCurrencies(Map<Currency, Double> currencies) {
 		this.currencies = currencies;
 	}
+
+
+
+	public List<PortfolioBalance> getAllBalance() {
+		return allBalance;
+	}
+
+
+
+	public void setAllBalance(List<PortfolioBalance> allBalance) {
+		this.allBalance = allBalance;
+	}
+
 
 }
