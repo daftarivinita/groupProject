@@ -11,6 +11,8 @@ import com.vinita.groupProject.models.PortfolioBalance;
 public interface PortfolioBalanceRepository extends CrudRepository<PortfolioBalance, Long> {
 	
 	List<PortfolioBalance> findAll();
+
+	PortfolioBalance save(Double balance);
 	
 
 }

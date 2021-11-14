@@ -6,8 +6,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.vinita.groupProject.models.PortfolioBalance;
@@ -65,6 +67,13 @@ public class ChartController {
 		json.add("PortfolioBalance", jsonBalance);
 		return json.toString();		
 
+	}
+	
+	@PostMapping("/linechartdata")
+	public PortfolioBalance saveBalance(HttpSession session) {
+		User user = this.uService.findUserById((Long) session.getAttribute("user__id"));
+		Double balance = uService.getPortfolioBalance(user);
+		return pService.saveBalance(balance);
 	}
 
 }

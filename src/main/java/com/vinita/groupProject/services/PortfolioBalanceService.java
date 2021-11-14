@@ -13,8 +13,17 @@ public class PortfolioBalanceService {
 	@Autowired
 	private PortfolioBalanceRepository pRepo;
 	
+	
+	
+	// Get all balance
 	public List<PortfolioBalance> getAllBalance(){
 		return pRepo.findAll();
+	}
+	
+	//Save balance
+	public PortfolioBalance saveBalance(Double balance) {
+		return pRepo.save(balance);
+		
 	}
 
 }
