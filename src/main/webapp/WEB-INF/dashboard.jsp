@@ -16,6 +16,7 @@
 <body>
 
 <h1>Welcome User, ${user.firstName}</h1>
+<h2>We have to find how to do arithmetic calculation</h2>
 
 <table class = "table table-striped table-dark table-bordered">
    <thead>
