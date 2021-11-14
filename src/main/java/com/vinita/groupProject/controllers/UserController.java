@@ -2,6 +2,8 @@ package com.vinita.groupProject.controllers;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.vinita.groupProject.models.Currency;
 import com.vinita.groupProject.models.User;
 import com.vinita.groupProject.services.CurrencyService;
 import com.vinita.groupProject.services.TransactionService;
@@ -48,7 +52,18 @@ public class UserController {
 		if (result.hasErrors()) {
 			return "user.jsp";
 		} else {
-			User newUser = this.uService.registerUser(user);
+//			User newUser = this.uService.registerUser(user);
+//			session.setAttribute("user__id",newUser.getId());
+			List<Currency> allCurency = this.cService.getAllCurrencies();
+            for(Currency c:allCurency) {
+                System.out.println(c.getName());
+                if(c.getName().equals("USD")) {
+                	user.getCurrencies().put(c, 11000d);
+                }else {
+                	user.getCurrencies().put(c, 0d);
+                }
+            }
+            User newUser = this.uService.registerUser(user);
 			session.setAttribute("user__id",newUser.getId());
 			return "redirect:/dashboard";
 		}
