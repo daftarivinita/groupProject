@@ -73,17 +73,17 @@ public class UserService {
 	public Double amazonPrice() {
 		Unirest.config().verifySsl(false);
 		HttpResponse<JsonNode> response = Unirest.get(url +"AMZN" + key).asJson();
-		String resultFromApi = response.getBody().getObject().getJSONArray("results").getJSONObject(0).getString("o");
-		double openPrice =Double.parseDouble(resultFromApi);
-		return openPrice;
+		String resultFromApi = response.getBody().getObject().getJSONArray("results").getJSONObject(0).getString("c");
+		double closePrice =Double.parseDouble(resultFromApi);
+		return closePrice;
 	}
 	/// getting price of specific stock Tesla	
 	public Double tslaPrice() {
 		Unirest.config().verifySsl(false);
 		HttpResponse<JsonNode> response = Unirest.get(url + "TSLA" + key).asJson();
-		String resultFromApi = response.getBody().getObject().getJSONArray("results").getJSONObject(0).getString("o");
-		double openPrice =Double.parseDouble(resultFromApi);
-		return openPrice;
+		String resultFromApi = response.getBody().getObject().getJSONArray("results").getJSONObject(0).getString("c");
+		double closePrice =Double.parseDouble(resultFromApi);
+		return closePrice;
 	}	
 	
 	/// getting price of any stock  and this is more efficient way
@@ -91,9 +91,9 @@ public class UserService {
 	public Double currencyPrice(String name) {
 		Unirest.config().verifySsl(false);
 		HttpResponse<JsonNode> response = Unirest.get(url + name + key).asJson();
-		String resultFromApi = response.getBody().getObject().getJSONArray("results").getJSONObject(0).getString("o");
-		double openPrice =Double.parseDouble(resultFromApi);
-		return openPrice;
+		String resultFromApi = response.getBody().getObject().getJSONArray("results").getJSONObject(0).getString("c");
+		double closePrice =Double.parseDouble(resultFromApi);
+		return closePrice;
 	}
 	
 	
