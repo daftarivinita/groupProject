@@ -17,11 +17,14 @@
 <header class="pb-2">
 <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark border border-success border-5">
   <div class="container-fluid">
-    <h4 class= "text-white">Some Fintech</h4>
+    <h4 class= "text-white">Fintech</h4>
     <div class="collapse navbar-collapse" id="navbarCollapse">
     	<ul class="nav navbar-nav mr-auto">
        		<li class="nav-item active px-3">
         		<a class="nav-link " aria-current="page" href="/dashboard">Dashboard</a>
+        	</li>
+        	<li class="nav-item active px-3">
+        		<a class="nav-link " aria-current="page" href="/chart">Graph</a>
         	</li>
       	</ul>
       	<ul class="nav navbar-nav ">
@@ -32,14 +35,8 @@
       	</div>
     </div>
     </nav>
-       		
-      	
-    
- 
-    
-
 <jsp:doBody/>
 </header>
 </body>
 </html>
-      	
+       		

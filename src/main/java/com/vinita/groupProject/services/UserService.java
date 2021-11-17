@@ -23,7 +23,7 @@ public class UserService {
 	
 	
 	String url ="https://api.polygon.io/v2/aggs/ticker/";
-	String key ="/prev?adjusted=true&apiKey=Il4TXhi_rLZBjI3VC0zSFRmrBhhx3wsD"; 
+	String key ="/prev?adjusted=true&apiKey=gg2PIIORiv8B_muWP9N261pxov2fYGHU"; 
 	
 	
 	//get all user
@@ -71,18 +71,20 @@ public class UserService {
 	}
 	/// getting price of specific stock amzon
 	public Double amazonPrice() {
-		Unirest.config().verifySsl(false);
-		HttpResponse<JsonNode> response = Unirest.get(url +"AMZN" + key).asJson();
-		String resultFromApi = response.getBody().getObject().getJSONArray("results").getJSONObject(0).getString("c");
-		double closePrice =Double.parseDouble(resultFromApi);
+//		Unirest.config().verifySsl(false);
+//		HttpResponse<JsonNode> response = Unirest.get(url +"AMZN" + key).asJson();
+//		String resultFromApi = response.getBody().getObject().getJSONArray("results").getJSONObject(0).getString("c");
+//		double closePrice =Double.parseDouble(resultFromApi);
+		double closePrice = 3540.70d;
 		return closePrice;
 	}
 	/// getting price of specific stock Tesla	
 	public Double tslaPrice() {
-		Unirest.config().verifySsl(false);
-		HttpResponse<JsonNode> response = Unirest.get(url + "TSLA" + key).asJson();
-		String resultFromApi = response.getBody().getObject().getJSONArray("results").getJSONObject(0).getString("c");
-		double closePrice =Double.parseDouble(resultFromApi);
+//		Unirest.config().verifySsl(false);
+//		HttpResponse<JsonNode> response = Unirest.get(url + "TSLA" + key).asJson();
+//		String resultFromApi = response.getBody().getObject().getJSONArray("results").getJSONObject(0).getString("c");
+//		double closePrice =Double.parseDouble(resultFromApi);
+		double closePrice =1054.73d;
 		return closePrice;
 	}	
 	

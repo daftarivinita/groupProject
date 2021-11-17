@@ -10,10 +10,13 @@
 </head>
 <body>
 <t:nav></t:nav>
+<t:header></t:header>
+<div class= "container">
 	<p>Welcome to Finteck charts</p>
 	<div id="container" style="height: 500px;"></div>
 	<script src="js/highcharts.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/index.js"></script>
+</div>
 </body>
 </html>

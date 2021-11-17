@@ -22,33 +22,43 @@
 <t:header></t:header>
 
 <div class = "container mt-5">
-<form:form method="POST" action="/${currency.id}/new" modelAttribute="transaction">
+<p>${errors}</p>
+<h2 class="text-center">${currency.name}</h2>
+<form:form class="border px-3 pt-2" method="POST" action="/${currency.id}/new" modelAttribute="transaction">
 
 <div class="form-group row">
-<p>${currency.name}</p>
-	<form:label path="count">Number Of Coins</form:label>
+
+	<form:label class="col-sm-2 col-form-label" path="count">Coins</form:label>
 	<form:errors path="count"/>
+	 <div class="col-sm-10">
 	<form:select type="text" class="form-control" path="count">
 		<c:forEach var = "i" begin = "1" end = "10">
     		<form:option value = "${i}">${i} </form:option>
     	</c:forEach>
     </form:select>
+    </div>
 </div>
 <div class="form-group row">
-	<form:label path="currentRate">Current Price</form:label>
+	<form:label class="col-sm-2 col-form-label" path="currentRate">Current Price</form:label>
 	<form:errors path="currentRate"/>
+	 <div class="col-sm-10">
 	<form:input  class="form-control" path="currentRate" value="${price}" readOnly="true"/>
+	</div>
 </div>
 <div class = "form-group row">
-	<form:label path="transactionType">transactionType</form:label>
+	<form:label class="col-sm-2 col-form-label" path="transactionType">transactionType</form:label>
 	<form:errors path="transactionType"/>
+	 <div class="col-sm-10">
 	<form:select type="text" class="form-control" path="transactionType">
 		<c:forEach items="${ transaction.possibleTransaction }" var="priorityOption">
 		<form:option value="${ priorityOption }">${ priorityOption }</form:option>
     </c:forEach>
     </form:select>
+    </div>
 </div>
+<div class= "d-flex flex-row-reverse">
 	<p><button class="btn btn-success">Submit</button></p>
+	</div>
 </form:form>
 </div>
 </body>

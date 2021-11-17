@@ -23,8 +23,14 @@ public class CurrencyService {
 		return this.cRepo.findAll();
 	}
 	public Currency createCurrency(Currency currency) {
-		return this.cRepo.save(currency);
+		Currency existing = this.cRepo.findByName(currency.getName());
+		if (existing == null) {
+			return this.cRepo.save(currency);
+		} else {
+			return existing;
+		}
 	}
+
 	//retrieve a currency
 		public Currency getCurrency(Long id) {
 			return this.cRepo.findById(id).orElse(null);
