@@ -18,7 +18,8 @@
 </head>
 <body>
 
-
+<t:nav2></t:nav2>
+<t:header></t:header>
 
 <div class = "container">
 	<p>${loginError}</p>
