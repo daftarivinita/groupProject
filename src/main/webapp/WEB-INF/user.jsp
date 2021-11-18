@@ -21,6 +21,7 @@
 
 
 <div class = "container">
+	<img src="/img/stock3.jpg" class="responsive">
 	<p>${loginError}</p>
 	<p>${errors}</p>
  	<div class="row">
