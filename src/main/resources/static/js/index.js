@@ -25,7 +25,7 @@ function drawLineChart(month1, portfolioBalance){
 	    },
 	    
 	    title: {
-	        text: 'Line Chart'
+	        text: 'Fintech Portfolio 2021'
 	    },
 	
 	    xAxis: {
