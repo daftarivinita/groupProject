@@ -37,7 +37,7 @@
          <c:forEach items="${currency}" var="entry"> 
          <c:if test ="${entry.key.name == 'USD'}">
             <td><c:out value="${entry.key.name}"/></td>
-            <td>$<c:out value="${entry.value}"/></td>
+            <td>$<fmt:formatNumber type = "number" maxFractionDigits = "2" value = "${entry.value}" /></td>
            <td></td>
             <td></td>
             <td></td>

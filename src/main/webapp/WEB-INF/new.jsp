@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Trade</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
@@ -24,7 +24,8 @@
 <div class = "container mt-5">
 <p>${errors}</p>
 <h2 class="text-center">${currency.name}</h2>
-<form:form class="border px-3 pt-2" method="POST" action="/${currency.id}/new" modelAttribute="transaction">
+
+<form:form class="border px-3 pt-4" method="POST" action="/${currency.id}/new" modelAttribute="transaction">
 
 <div class="form-group row">
 

@@ -49,7 +49,11 @@ public class HomeController {
 	}
 
 	@GetMapping("/dashboard")
-	public String getCurrency(Model mymodel, HttpSession session) {
+	public String getCurrency(Model mymodel, HttpSession session, RedirectAttributes redirectAttributes) {
+		if (session.getAttribute("user__id") == null) {
+			redirectAttributes.addFlashAttribute("errors", "PLEASE LOGIN!");
+			return "redirect:/";
+		}
 		User user = this.uService.findUserById((Long)session.getAttribute("user__id"));
 		mymodel.addAttribute("user", user);
 		mymodel.addAttribute("balance", this.uService.getPortfolioBalance(user));
@@ -64,7 +68,11 @@ public class HomeController {
 	
 	@GetMapping("/{id}/new")
 
-	public String getPageForTransaction(@PathVariable("id") Long id,Model mymodel, HttpSession session,@ModelAttribute("transaction") Transaction transaction) {
+	public String getPageForTransaction(@PathVariable("id") Long id,Model mymodel, HttpSession session,@ModelAttribute("transaction") Transaction transaction, RedirectAttributes redirectAttributes) {
+		if (session.getAttribute("user__id") == null) {
+			redirectAttributes.addFlashAttribute("errors", "PLEASE LOGIN!");
+			return "redirect:/";
+		}
 		mymodel.addAttribute("user", this.uService.findUserById((Long)session.getAttribute("user__id")));
 		mymodel.addAttribute("currency", this.cService.getCurrency(id));
 		if(this.cService.getCurrency(id).getName().equals("Amazon")) {

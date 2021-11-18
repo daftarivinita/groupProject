@@ -12,7 +12,7 @@
 <t:nav></t:nav>
 <t:header></t:header>
 <div class= "container">
-	<p>Welcome to Finteck charts</p>
+	<h2>Welcome to Finteck charts</h2>
 	<div id="container" style="height: 500px;"></div>
 	<script src="js/highcharts.js"></script>
 	<script src="js/jquery.js"></script>
